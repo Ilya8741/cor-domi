@@ -2856,7 +2856,22 @@ line-height: 140%; /* 22.4px */
 	justify-content: center;
 	cursor: pointer;
   background: #fff;
-  border-radius: none !important;
+  border-radius: 0 !important;
+  transition: all .3s ease;
+}
+
+.team-showcase__arrow svg path {
+  transition: all .3s ease;
+}
+
+@media(hover: hover) {
+  .team-showcase__arrow:hover {
+    background: #fff;
+  }
+
+  .team-showcase__arrow:hover path {
+    stroke: #fff;
+  }
 }
 
 .team-showcase__arrow.slick-disabled {
