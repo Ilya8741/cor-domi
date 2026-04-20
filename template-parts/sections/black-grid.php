@@ -11,7 +11,7 @@ if ( ! $left_image && ! $right_image && ! $title && ! $text && ! $link ) {
 }
 ?>
 
-<section class="black-grid <?php echo esc_attr( $spacing ); ?>">
+<section class="black-grid <?php echo esc_attr( $spacing ); ?>" data-theme="dark" data-aos="fade-up">
 	<div class="black-grid__inner">
 		<div class="black-grid__left">
 			<?php if ( $left_image ) : ?>
@@ -50,9 +50,9 @@ if ( ! $left_image && ! $right_image && ! $title && ! $text && ! $link ) {
 
 			<div class="black-grid__content">
 				<?php if ( $title ) : ?>
-					<div class="main-title-h4 black-grid__title">
+					<h2 class="main-title-h4 black-grid__title">
 						<?php echo wp_kses_post( $title ); ?>
-					</div>
+					</h2>
 				<?php endif; ?>
 
 				<?php if ( $text ) : ?>

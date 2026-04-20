@@ -52,7 +52,7 @@ if (!empty($images) && is_array($images)) {
 				</div>
 			<?php endif; ?>
 
-			<div class="parallax-section__content">
+			<div class="parallax-section__content" data-aos="fade-up" data-duration="500">
 				<?php if (!empty($title)) : ?>
 					<h3 class="parallax-section__title main-title-h3">
 						<?php echo wp_kses_post($title); ?>

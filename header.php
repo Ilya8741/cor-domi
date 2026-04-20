@@ -123,9 +123,12 @@ if ( is_front_page() && $pl_enabled ): ?>
 		<header id="masthead" class="site-header">
 			<div class="site-header-wrapper">
 				<div class="site-header-wrapper-main">
-        	<button class="header-open header-main-link" aria-label="Open menu">
+          <div data-aos="fade-right" data-aos-delay="500">
+	<button class="header-open header-main-link" aria-label="Open menu">
           Menu
 				</button>
+          </div>
+        
         <div>
 
         
@@ -161,9 +164,11 @@ if ( is_front_page() && $pl_enabled ): ?>
 					</a>
 				<?php endif; ?>
         </div>
-				<a class="header-contact-link header-main-link">
+        <div data-aos="fade-left" data-aos-delay="500">
+				<a href="/contact" class="header-contact-link header-main-link">
           Contact
 				</a>
+        </div>
 				</div>
 			</div>
 			<div class="header-burger-menu">

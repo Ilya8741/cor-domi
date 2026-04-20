@@ -20,21 +20,28 @@ $spacing = !empty($spacing) ? $spacing : 'all-spacing';
 
 		<?php if (!empty($logos) && is_array($logos)) : ?>
 			<div class="logos-section__grid">
-				<?php foreach ($logos as $item) :
+				<?php
+				$duration = 400;
+
+				foreach ($logos as $item) :
 					$image = $item['logo'] ?? null;
-					$link = $item['link'] ?? null;
+					$link  = $item['link'] ?? null;
 
 					if (empty($image)) {
 						continue;
 					}
-					?>
-								<img
-									class="logos-section__logo"
-									src="<?php echo esc_url($image['url']); ?>"
-									alt="<?php echo esc_attr($image['alt'] ?: 'Logo'); ?>"
-									loading="lazy"
-								>
-				<?php endforeach; ?>
+				?>
+					<img
+						class="logos-section__logo"
+						src="<?php echo esc_url($image['url']); ?>"
+						alt="<?php echo esc_attr($image['alt'] ?: 'Logo'); ?>"
+						loading="lazy"
+						data-aos="fade-right"
+						data-aos-duration="<?php echo esc_attr($duration); ?>">
+				<?php
+					$duration += 50;
+				endforeach;
+				?>
 			</div>
 
 			<div class="logos-section__marquee-wrap">
@@ -50,13 +57,12 @@ $spacing = !empty($spacing) ? $spacing : 'all-spacing';
 										if (empty($image)) {
 											continue;
 										}
-										?>
+									?>
 										<img
-														class="logos-section__logo"
-														src="<?php echo esc_url($image['url']); ?>"
-														alt="<?php echo esc_attr($image['alt'] ?: 'Logo'); ?>"
-														loading="lazy"
-													>
+											class="logos-section__logo"
+											src="<?php echo esc_url($image['url']); ?>"
+											alt="<?php echo esc_attr($image['alt'] ?: 'Logo'); ?>"
+											loading="lazy">
 									<?php endforeach; ?>
 								</div>
 							<?php endfor; ?>
@@ -69,76 +75,78 @@ $spacing = !empty($spacing) ? $spacing : 'all-spacing';
 </section>
 
 <script>
-document.addEventListener('DOMContentLoaded', () => {
-	const marquees = document.querySelectorAll('.logos-section__marquee');
-	if (!marquees.length) return;
+	document.addEventListener('DOMContentLoaded', () => {
+		const marquees = document.querySelectorAll('.logos-section__marquee');
+		if (!marquees.length) return;
 
-	function initMarquee(root) {
-		const inner = root.querySelector('.js-logos-marquee-inner');
-		if (!inner) return;
+		function initMarquee(root) {
+			const inner = root.querySelector('.js-logos-marquee-inner');
+			if (!inner) return;
 
-		const segments = Array.from(inner.querySelectorAll('.logos-section__segment'));
-		if (segments.length < 3) return;
+			const segments = Array.from(inner.querySelectorAll('.logos-section__segment'));
+			if (segments.length < 3) return;
 
-		const SPEED = Number(inner.getAttribute('data-speed')) || 80;
+			const SPEED = Number(inner.getAttribute('data-speed')) || 80;
 
-		function fillToViewport(seg) {
-			const vw = root.clientWidth;
-			const children = Array.from(seg.children);
-			if (!children.length) return;
+			function fillToViewport(seg) {
+				const vw = root.clientWidth;
+				const children = Array.from(seg.children);
+				if (!children.length) return;
 
-			let guard = 0;
-			while (seg.scrollWidth < vw && guard < 20) {
-				const frag = document.createDocumentFragment();
-				children.forEach((node) => frag.appendChild(node.cloneNode(true)));
-				seg.appendChild(frag);
-				guard++;
+				let guard = 0;
+				while (seg.scrollWidth < vw && guard < 20) {
+					const frag = document.createDocumentFragment();
+					children.forEach((node) => frag.appendChild(node.cloneNode(true)));
+					seg.appendChild(frag);
+					guard++;
+				}
 			}
-		}
 
-		function measureWidth(seg) {
-			return seg.getBoundingClientRect().width;
-		}
+			function measureWidth(seg) {
+				return seg.getBoundingClientRect().width;
+			}
 
-		function apply() {
-			segments.forEach((s) => s.style.animation = 'none');
+			function apply() {
+				segments.forEach((s) => s.style.animation = 'none');
 
-			segments.forEach(fillToViewport);
+				segments.forEach(fillToViewport);
 
-			const distance = Math.max(1, measureWidth(segments[0]));
-			const duration = distance / SPEED;
+				const distance = Math.max(1, measureWidth(segments[0]));
+				const duration = distance / SPEED;
 
-			segments.forEach((seg, i) => {
-				seg.style.setProperty('--seg-duration', `${duration}s`);
-				seg.style.setProperty('--seg-delay', `${-(i * duration / segments.length)}s`);
-			});
-
-			requestAnimationFrame(() => {
-				segments.forEach((seg) => {
-					const animationName = inner.classList.contains('direction-right')
-						? 'logos-marquee-right'
-						: 'logos-marquee-left';
-
-					seg.style.animation = `${animationName} var(--seg-duration) linear infinite`;
+				segments.forEach((seg, i) => {
+					seg.style.setProperty('--seg-duration', `${duration}s`);
+					seg.style.setProperty('--seg-delay', `${-(i * duration / segments.length)}s`);
 				});
+
+				requestAnimationFrame(() => {
+					segments.forEach((seg) => {
+						const animationName = inner.classList.contains('direction-right') ?
+							'logos-marquee-right' :
+							'logos-marquee-left';
+
+						seg.style.animation = `${animationName} var(--seg-duration) linear infinite`;
+					});
+				});
+			}
+
+			apply();
+
+			if (document.fonts && document.fonts.ready) {
+				document.fonts.ready.then(apply).catch(() => {});
+			}
+
+			let rAF;
+			const onResize = () => {
+				cancelAnimationFrame(rAF);
+				rAF = requestAnimationFrame(apply);
+			};
+
+			window.addEventListener('resize', onResize, {
+				passive: true
 			});
 		}
 
-		apply();
-
-		if (document.fonts && document.fonts.ready) {
-			document.fonts.ready.then(apply).catch(() => {});
-		}
-
-		let rAF;
-		const onResize = () => {
-			cancelAnimationFrame(rAF);
-			rAF = requestAnimationFrame(apply);
-		};
-
-		window.addEventListener('resize', onResize, { passive: true });
-	}
-
-	marquees.forEach(initMarquee);
-});
+		marquees.forEach(initMarquee);
+	});
 </script>

@@ -16,7 +16,7 @@ $spacing = !empty($spacing) ? $spacing : 'all-spacing';
 <section class="about-info about-info--<?php echo esc_attr($spacing); ?>">
 	<div class="about-info__container">
 		<div class="about-info__top">
-			<div class="about-info__intro">
+			<div class="about-info__intro" data-aos="fade-right">
 				<?php if (!empty($title)) : ?>
 					<h2 class="about-info__title main-title-h4">
 						<?php echo wp_kses_post($title); ?>
@@ -35,7 +35,7 @@ $spacing = !empty($spacing) ? $spacing : 'all-spacing';
 			</div>
 
 			<?php if (!empty($image_top)) : ?>
-				<div class="about-info__image-top-wrap">
+				<div class="about-info__image-top-wrap" data-aos="fade-left">
 					<img
 						class="about-info__image-top"
 						src="<?php echo esc_url($image_top['url']); ?>"
@@ -48,7 +48,7 @@ $spacing = !empty($spacing) ? $spacing : 'all-spacing';
 
 		<div class="about-info__bottom">
 			<?php if (!empty($image_bottom)) : ?>
-				<div class="about-info__image-bottom-wrap">
+				<div class="about-info__image-bottom-wrap" data-aos="fade-right">
 					<img
 						class="about-info__image-bottom"
 						src="<?php echo esc_url($image_bottom['url']); ?>"
@@ -59,7 +59,7 @@ $spacing = !empty($spacing) ? $spacing : 'all-spacing';
 			<?php endif; ?>
 
 			<?php if (!empty($text)) : ?>
-				<div class="about-info__text">
+				<div class="about-info__text" data-aos="fade-left">
 					<?php echo wp_kses_post($text); ?>
 				</div>
 			<?php endif; ?>

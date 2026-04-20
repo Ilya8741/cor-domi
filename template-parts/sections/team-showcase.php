@@ -17,7 +17,7 @@ $spacing    = !empty($spacing) ? $spacing : 'all-spacing';
 	<div class="team-showcase__container">
 
 		<?php if (!empty($subtitle) || !empty($title)) : ?>
-			<div class="team-showcase__head">
+			<div class="team-showcase__head" data-aos="fade-up">
 				<?php if (!empty($subtitle)) : ?>
 					<p class="team-showcase__subtitle">
 						<?php echo esc_html($subtitle); ?>
@@ -34,7 +34,7 @@ $spacing    = !empty($spacing) ? $spacing : 'all-spacing';
 
 		<?php if (!empty($items) && is_array($items)) : ?>
 
-			<div class="team-showcase__desktop">
+			<div class="team-showcase__desktop" data-aos="fade-up">
 				<div class="team-showcase__images js-team-images-slick">
 					<?php foreach ($items as $item) :
 						$image = $item['image'] ?? null;
@@ -109,7 +109,7 @@ $spacing    = !empty($spacing) ? $spacing : 'all-spacing';
                  </div>
 			</div>
 
-			<div class="team-showcase__mobile">
+			<div class="team-showcase__mobile" data-aos="fade-right">
 				<div class="team-showcase__mobile-slider js-team-mobile-slick">
 					<?php foreach ($items as $item) :
 						$image = $item['image'] ?? null;

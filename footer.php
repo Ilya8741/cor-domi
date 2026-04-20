@@ -29,7 +29,7 @@ $footer_copyright = get_field('footer_copyright', 'footer_options');
 ?>
 
 <footer id="colophon" class="site-footer" data-theme="dark">
-	<div class="site-footer__inner">
+	<div class="site-footer__inner"  data-aos="fade-up" data-aos-offset="200">
 
 		<?php if (!empty($instagram_title) || !empty($instagram_link) || !empty($instagram_images)) : ?>
 			<div class="site-footer__top">
@@ -280,9 +280,8 @@ $footer_copyright = get_field('footer_copyright', 'footer_options');
 					</div>
 				</div>
 			</div>
-
 			<div class="site-footer__bottom-row">
-				<div class="site-footer__partners">
+				<div class="site-footer__partners" >
 					<?php if (!empty($footer_partner_links)) : ?>
 						<?php foreach ($footer_partner_links as $item) :
 							$image = $item['image'] ?? null;
@@ -336,7 +335,6 @@ $footer_copyright = get_field('footer_copyright', 'footer_options');
 				</div>
 			</div>
 		</div>
-
 	</div>
 </footer>
 

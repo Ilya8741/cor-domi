@@ -13,7 +13,7 @@ if (empty($title) && empty($text) && empty($link) && empty($images)) {
 	<div class="sticky-section__container">
 		<div class="sticky-section__grid">
 
-			<div class="sticky-section__left">
+			<div class="sticky-section__left" data-aos="fade-right">
 				<div class="sticky-section__left-inner">
 					<div class="sticky-section__top-content">
 						<?php if (!empty($title)) : ?>
@@ -56,7 +56,7 @@ if (empty($title) && empty($text) && empty($link) && empty($images)) {
 							$number = $index + 1;
 							$item_class = 'sticky-section__image sticky-section__image--' . $number;
 							?>
-							<div class="<?php echo esc_attr($item_class); ?>">
+							<div class="<?php echo esc_attr($item_class); ?>" data-aos="fade-up">
 								<img
 									src="<?php echo esc_url($image['url']); ?>"
 									alt="<?php echo esc_attr($image['alt'] ?: 'Sticky section image'); ?>"

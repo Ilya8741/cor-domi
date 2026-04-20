@@ -10,7 +10,7 @@ if (empty($title) && empty($posts_selected)) {
 <section class="selected-works-section">
     <div class="selected-works-section__container">
         <?php if (!empty($title)) : ?>
-            <div class="selected-works-section__header">
+            <div class="selected-works-section__header" data-aos="fade-left">
                 <h2 class="selected-works-section__title main-title-h3">
                     <?php echo wp_kses_post($title); ?>
                 </h2>
@@ -30,7 +30,7 @@ if (empty($title) && empty($posts_selected)) {
                 $post_image = get_the_post_thumbnail_url($post_id, 'large');
                 ?>
                 <div class="swiper-slide selected-works-slide">
-                    <div class="selected-works-slide__inner">
+                    <div class="selected-works-slide__inner" data-aos="fade-right">
                         <a href="<?php echo esc_url($post_link); ?>">
                             <div class="selected-works-slide__image-wrap">
                                 <?php if (!empty($post_image)) : ?>

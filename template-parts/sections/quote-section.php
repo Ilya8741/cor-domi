@@ -29,7 +29,7 @@ $spacing = !empty($spacing) ? $spacing : 'all-spacing';
 		</div>
 
 		<div class="quote-section__grid">
-			<div class="quote-section__left">
+			<div class="quote-section__left" data-aos="fade-right">
 				<?php if (!empty($title)) : ?>
 					<h2 class="quote-section__title main-title-h5">
 						<?php echo esc_html($title); ?>
@@ -47,7 +47,7 @@ $spacing = !empty($spacing) ? $spacing : 'all-spacing';
 				<?php endif; ?>
 			</div>
 
-			<div class="quote-section__right">
+			<div class="quote-section__right" data-aos="fade-left">
 				<?php if (!empty($text)) : ?>
 					<p class="quote-section__text">
 						<?php echo esc_html($text); ?>

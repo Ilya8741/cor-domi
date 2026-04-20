@@ -25,7 +25,7 @@ if ($hero_title || $hero_image): ?>
 			</div>
 		<?php endif; ?>
 
-		<div class="hero-section__content">
+		<div class="hero-section__content" data-aos="fade-right" data-aos-delay="300">
 				<?php if ($hero_subtitle): ?>
 				<span class="hero-section__subtitle">
 					<?php echo wp_kses_post($hero_subtitle); ?>

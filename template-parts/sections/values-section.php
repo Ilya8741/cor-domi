@@ -18,7 +18,7 @@ $spacing = !empty($spacing) ? $spacing : 'all-spacing';
 <section class="values-section values-section--<?php echo esc_attr($background); ?> values-section--<?php echo esc_attr($spacing); ?>">
 	<div class="values-section__container">
 		<div class="values-section__grid">
-			<div class="values-section__left">
+			<div class="values-section__left" data-aos="fade-right">
 				<?php if (!empty($text)) : ?>
 					<div class="values-section__text">
 						<?php echo wp_kses_post($text); ?>
@@ -49,18 +49,21 @@ $spacing = !empty($spacing) ? $spacing : 'all-spacing';
 
 			<div class="values-section__right">
 				<?php if (!empty($subtitle)) : ?>
-					<p class="values-section__subtitle">
+					<p class="values-section__subtitle" data-aos="fade-left">
 						<?php echo esc_html($subtitle); ?>
 					</p>
 				<?php endif; ?>
 
 				<?php if (!empty($items) && is_array($items)) : ?>
+					<?php $duration = 500; ?>
 					<div class="values-section__items">
 						<?php foreach ($items as $item) :
 							$item_title = $item['title'] ?? '';
 							$item_text = $item['text'] ?? '';
 							?>
-							<div class="values-section__item">
+							<div class="values-section__item"
+							data-aos="fade-left"
+							data-aos-duration="<?php echo esc_attr($duration); ?>">
 								<?php if (!empty($item_title)) : ?>
 									<h3 class="values-section__item-title main-title-h5">
 										<?php echo esc_html($item_title); ?>
@@ -72,6 +75,7 @@ $spacing = !empty($spacing) ? $spacing : 'all-spacing';
 									</p>
 								<?php endif; ?>
 							</div>
+							<?php $duration += 100; ?>
 						<?php endforeach; ?>
 					</div>
 				<?php endif; ?>

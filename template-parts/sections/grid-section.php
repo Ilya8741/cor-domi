@@ -19,7 +19,7 @@ $spacing = !empty($spacing) ? $spacing : 'all-spacing';
 	<div class="grid-section__container">
 		<div class="grid-section__mobile-top">
 			<?php if (!empty($big_image)) : ?>
-				<div class="grid-section__big-image-wrap">
+				<div class="grid-section__big-image-wrap" data-aos="fade-right">
 					<img
 						class="grid-section__big-image"
 						src="<?php echo esc_url($big_image['url']); ?>"
@@ -30,7 +30,7 @@ $spacing = !empty($spacing) ? $spacing : 'all-spacing';
 			<?php endif; ?>
 
 			<?php if (!empty($small_image)) : ?>
-				<div class="grid-section__small-image-wrap">
+				<div class="grid-section__small-image-wrap" data-aos="fade-left">
 					<img
 						class="grid-section__small-image"
 						src="<?php echo esc_url($small_image['url']); ?>"
@@ -44,7 +44,7 @@ $spacing = !empty($spacing) ? $spacing : 'all-spacing';
 		<div class="grid-section__desktop-grid">
 			<div class="grid-section__left">
 				<?php if (!empty($big_image)) : ?>
-					<div class="grid-section__big-image-wrap grid-section__big-image-wrap--desktop">
+					<div class="grid-section__big-image-wrap grid-section__big-image-wrap--desktop" data-aos="fade-right">
 						<img
 							class="grid-section__big-image"
 							src="<?php echo esc_url($big_image['url']); ?>"
@@ -57,7 +57,7 @@ $spacing = !empty($spacing) ? $spacing : 'all-spacing';
 
 			<div class="grid-section__right">
 				<?php if (!empty($small_image)) : ?>
-					<div class="grid-section__small-image-wrap grid-section__small-image-wrap--desktop">
+					<div class="grid-section__small-image-wrap grid-section__small-image-wrap--desktop" data-aos="fade-left">
 						<img
 							class="grid-section__small-image"
 							src="<?php echo esc_url($small_image['url']); ?>"
@@ -67,7 +67,7 @@ $spacing = !empty($spacing) ? $spacing : 'all-spacing';
 					</div>
 				<?php endif; ?>
 
-				<div class="grid-section__content">
+				<div class="grid-section__content" data-aos="fade-left">
 					<?php if (!empty($title)) : ?>
 						<h2 class="grid-section__title main-title-h4">
 							<?php echo esc_html($title); ?>
