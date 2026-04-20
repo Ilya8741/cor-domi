@@ -2866,7 +2866,7 @@ line-height: 140%; /* 22.4px */
 
 @media(hover: hover) {
   .team-showcase__arrow:hover {
-    background: #fff;
+    background: #0d0d0d;
   }
 
   .team-showcase__arrow:hover path {
