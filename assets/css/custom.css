@@ -137,7 +137,6 @@ a:hover {
 .main-title-h6 em {
   font-family: "Martina Plantijn", sans-serif;
   font-style: italic;
-  font-weight: 400;
 }
 
 @media (max-width: 992px) {
@@ -401,7 +400,6 @@ html {
 @media (hover: hover) {
   .hb-menu__link:hover {
     font-style: italic;
-    font-weight: 400;
   }
 }
 
