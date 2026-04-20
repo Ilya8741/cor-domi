@@ -164,7 +164,7 @@ if ( is_front_page() && $pl_enabled ): ?>
 					</a>
 				<?php endif; ?>
         </div>
-        <div data-aos="fade-left" data-aos-delay="500">
+        <div data-aos="fade-left" data-aos-delay="500" class="header-contact-link">
 				<a href="/contact" class="header-contact-link header-main-link">
           Contact
 				</a>
@@ -175,7 +175,7 @@ if ( is_front_page() && $pl_enabled ): ?>
 				<div class="header-burger-menu-wrapper">
 
 					<?php
-					$main_image = get_field('mega_menu_image', 'header_options'); // Image
+					$main_image = get_field('mega_menu_image', 'header_options');
 					?>
 
 					<div class="hb-grid">
@@ -187,7 +187,7 @@ if ( is_front_page() && $pl_enabled ): ?>
 											<?php
 											$i = 1;
 											while (have_rows('header_menu', 'header_options')): the_row();
-												$link = get_sub_field('link'); // Link
+												$link = get_sub_field('link');
 												$img_id_attr = 'hb-img-' . $i;
 												$has_image   = get_sub_field('image');
 												if (!$has_image) {

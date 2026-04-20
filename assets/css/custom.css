@@ -137,6 +137,7 @@ a:hover {
 .main-title-h6 em {
   font-family: "Martina Plantijn", sans-serif;
   font-style: italic;
+  font-weight: 400;
 }
 
 @media (max-width: 992px) {
@@ -827,7 +828,7 @@ body.preloader-already-seen .site-header {
   text-align: center;
   font-family: "Test Martina Plantijn";
   font-size: 32px;
-  font-weight: 400;
+  font-weight: 300;
   line-height: 160%;
   font-style: italic;
 }
@@ -1280,7 +1281,7 @@ display: flex;
   }
 
   .quote-section__quote svg {
-    height: 32px;
+    height: 23.5px;
     width: auto;
   }
 
@@ -1463,6 +1464,7 @@ display: flex;
 
   .selected-works-slide__excerpt {
     margin-top: 16px;
+    font-size: 16px;
   }
 
   .selected-works-section {
@@ -1861,7 +1863,7 @@ display: flex;
 
 .site-footer__partner img {
   display: block;
-  max-height: 54px;
+  max-height: 52px;
   width: auto;
 }
 
@@ -1960,10 +1962,6 @@ display: flex;
     display: block;
   }
 
-  .site-footer__columns {
-    grid-template-columns: 1fr;
-  }
-
   .site-footer__inner {
     padding: 0 0 0 24px;
   }
@@ -1989,7 +1987,7 @@ display: flex;
 
   .site-footer__columns {
     grid-template-columns: 1fr;
-    gap: 32px;
+    gap: 40px;
   }
 
   .site-footer__menus {
@@ -2191,7 +2189,7 @@ display: flex;
 	}
 
 	.about-info__image-bottom {
-		aspect-ratio: 351 / 156;
+		aspect-ratio: 351 / 183;
 	}
 }
 
@@ -2556,15 +2554,6 @@ padding: 0 0 0 60px;
 	max-width: 536px;
 }
 
-.values-section__subtitle {
-	margin-bottom: 12px;
-	color: #0D0D0D;
-	font-size: 12px;
-	font-style: normal;
-	font-weight: 400;
-	line-height: 1.2;
-}
-
 .values-section__items {
 	display: flex;
 	flex-direction: column;
@@ -2602,6 +2591,7 @@ padding: 0 0 0 60px;
     font-style: normal;
     font-weight: 300;
     line-height: 140%;
+    	margin-bottom: 12px;
 }
 
 @media (max-width: 1200px) {
@@ -2611,6 +2601,10 @@ padding: 0 0 0 60px;
 }
 
 @media (max-width: 992px) {
+  .values-section__subtitle {
+    margin-bottom: 8px;
+  }
+
 	.values-section--all-spacing {
 		padding: 80px 0;
 	}
@@ -2862,6 +2856,7 @@ line-height: 140%; /* 22.4px */
 	justify-content: center;
 	cursor: pointer;
   background: #fff;
+  border-radius: none !important;
 }
 
 .team-showcase__arrow.slick-disabled {
@@ -3145,6 +3140,9 @@ line-height: 140%; /* 22.4px */
 }
 
 @media (max-width: 992px) {
+  .about-hero__subtitle {
+    margin-bottom: 8px;
+  }
 	.about-hero {
 		height: 100dvh;
 		margin-top: -116px;
@@ -3157,9 +3155,5 @@ line-height: 140%; /* 22.4px */
 
 	.about-hero__container {
 		padding: 0 24px;
-	}
-
-	.about-hero__content {
-		padding-bottom: 24px;
 	}
 }
