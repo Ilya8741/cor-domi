@@ -1128,6 +1128,10 @@ body.preloader-already-seen .site-header {
 }
 
 @media (max-width: 992px) {
+  .article-sticky-content__grid.sticky-section__grid {
+    gap: 80px;
+  }
+  
   .article-sticky-content h6,
   .article-sticky-content h5,
   .article-sticky-content h4,
@@ -4014,7 +4018,7 @@ body.preloader-already-seen .site-header {
 }
 
 .article-hero__header.service-hero__header {
-  grid-template-columns: 1.15fr 2fr;
+  grid-template-columns: 1.3fr 2fr;
 }
 
 .service-hero__subtitle {

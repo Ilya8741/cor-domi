@@ -14,7 +14,7 @@ $spacing = !empty($spacing) ? $spacing : 'all-spacing';
 
 <section class="approach-hero approach-hero--<?php echo esc_attr($background); ?> approach-hero <?php echo esc_attr($spacing); ?> <?php if ($big_image): ?> approach-hero--big-image<?php endif; ?>">
 	<?php if ($header): ?>
-		<div class="approach-hero__header">
+		<div class="approach-hero__header" data-aos="fade-right">
 			<h2 class="main-title-h5 approach-hero__header-title">
 				<?php echo esc_html($header); ?>
 			</h2>
