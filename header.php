@@ -252,7 +252,7 @@ if ( is_front_page() && $pl_enabled ): ?>
 
       var lastScrollY = window.pageYOffset || document.documentElement.scrollTop;
       var ticking = false;
-      var threshold = 8;
+      var threshold = 30;
 
       function updateHeaderVisibility() {
         ticking = false;
