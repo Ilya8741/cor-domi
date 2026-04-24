@@ -9,7 +9,7 @@
 
 if ( ! defined( '_S_VERSION' ) ) {
 	// Replace the version number of the theme on each release.
-	define( '_S_VERSION', '1.4.4' );
+	define( '_S_VERSION', '1.4.5' );
 }
 
 /**
@@ -421,13 +421,16 @@ add_action('init', function () {
       'not_found_in_trash' => 'No projects in trash',
       'all_items'          => 'All Projects',
     ],
-    'public'          => true,
-    'has_archive'     => true,
-    'rewrite'         => ['slug' => 'projects'],
-    'show_in_rest'    => true,
-    'menu_icon'       => 'dashicons-building',
-    'supports'        => ['title', 'editor', 'thumbnail', 'excerpt', 'revisions'],
-    'taxonomies'      => ['category', 'post_tag'],
+    'public'       => true,
+    'has_archive'  => false,
+    'rewrite'      => [
+      'slug'       => 'project',
+      'with_front' => false,
+    ],
+    'show_in_rest' => true,
+    'menu_icon'    => 'dashicons-building',
+    'supports'     => ['title', 'editor', 'thumbnail', 'excerpt', 'revisions'],
+    'taxonomies'   => ['category', 'post_tag'],
   ]);
 
   // Press
@@ -446,13 +449,16 @@ add_action('init', function () {
       'not_found_in_trash' => 'No articles in trash',
       'all_items'          => 'All Press',
     ],
-    'public'          => true,
-    'has_archive'     => true,
-    'rewrite'         => ['slug' => 'press'],
-    'show_in_rest'    => true,
-    'menu_icon'       => 'dashicons-media-document',
-    'supports'        => ['title', 'editor', 'thumbnail', 'excerpt', 'revisions'],
-    'taxonomies'      => ['category', 'post_tag'],
+    'public'       => true,
+    'has_archive'  => false,
+    'rewrite'      => [
+      'slug'       => 'article',
+      'with_front' => false,
+    ],
+    'show_in_rest' => true,
+    'menu_icon'    => 'dashicons-media-document',
+    'supports'     => ['title', 'editor', 'thumbnail', 'excerpt', 'revisions'],
+    'taxonomies'   => ['category', 'post_tag'],
   ]);
 
 });
