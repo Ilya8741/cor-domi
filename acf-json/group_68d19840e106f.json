@@ -1974,16 +1974,17 @@
                                 "all-spacing": "All spacing",
                                 "bottom-spacing": "Bottom spacing",
                                 "top-spacing": "Top spacing",
-                                "none-spacing": "None spacing"
+                                "none-spacing": "None spacing",
+                                "hero-spacing": "Hero spacing"
                             },
                             "default_value": "all-spacing",
                             "return_format": "value",
                             "multiple": 0,
                             "allow_null": 0,
+                            "allow_in_bindings": 0,
                             "ui": 0,
                             "ajax": 0,
-                            "placeholder": "",
-                            "allow_in_bindings": 0
+                            "placeholder": ""
                         },
                         {
                             "key": "field_68fa2002approachhero_background",
@@ -3404,5 +3405,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1777029813
+    "modified": 1777037303
 }

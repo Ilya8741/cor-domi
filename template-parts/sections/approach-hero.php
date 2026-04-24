@@ -13,13 +13,13 @@ $spacing = !empty($spacing) ? $spacing : 'all-spacing';
 ?>
 
 <section class="approach-hero approach-hero--<?php echo esc_attr($background); ?> approach-hero <?php echo esc_attr($spacing); ?> <?php if ($big_image): ?> approach-hero--big-image<?php endif; ?>">
-	<div class="approach-hero__header">
-		<?php if ($header): ?>
+	<?php if ($header): ?>
+		<div class="approach-hero__header">
 			<h2 class="main-title-h5 approach-hero__header-title">
 				<?php echo esc_html($header); ?>
 			</h2>
-		<?php endif; ?>
-	</div>
+		</div>
+	<?php endif; ?>
 	<div class="approach-hero__container">
 		<?php if ($image): ?>
 			<div class="approach-hero__image-wrap" data-aos="fade-right">
@@ -43,19 +43,20 @@ $spacing = !empty($spacing) ? $spacing : 'all-spacing';
 				</h1>
 			<?php endif; ?>
 			<?php if ($big_image): ?> <div class="approach-hero__text-wrapper"><?php endif; ?>
-			<?php if ($text): ?>
-				<div class="approach-hero__text">
-					<?php echo wp_kses_post($text); ?>
-				</div>
-			<?php endif; ?>
-			<?php if ( $link ) : ?>
+				<?php if ($text): ?>
+					<div class="approach-hero__text">
+						<?php echo wp_kses_post($text); ?>
+					</div>
+				<?php endif; ?>
+				<?php if ($link) : ?>
 					<a class="main-link approach-hero__link"
-						href="<?php echo esc_url( $link['url'] ); ?>"
-						<?php echo ! empty( $link['target'] ) ? 'target="' . esc_attr( $link['target'] ) . '"' : ''; ?>>
-						<?php echo esc_html( $link['title'] ); ?>
+						href="<?php echo esc_url($link['url']); ?>"
+						<?php echo ! empty($link['target']) ? 'target="' . esc_attr($link['target']) . '"' : ''; ?>>
+						<?php echo esc_html($link['title']); ?>
 					</a>
 				<?php endif; ?>
-				<?php if ($big_image): ?> </div><?php endif; ?>
+				<?php if ($big_image): ?>
+				</div><?php endif; ?>
 		</div>
 	</div>
 </section>

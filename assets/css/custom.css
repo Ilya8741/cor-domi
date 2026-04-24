@@ -3229,6 +3229,9 @@ body.preloader-already-seen .site-header {
 
 .approach-hero {
   overflow: hidden;
+}
+
+.approach-hero.hero-spacing {
   padding: 30px 60px 0 0;
 }
 
@@ -3421,7 +3424,7 @@ body.preloader-already-seen .site-header {
     margin-bottom: 8px;
   }
 
-  .approach-hero {
+  .approach-hero.hero-spacing {
     padding: 36px 24px 0 24px;
   }
 
