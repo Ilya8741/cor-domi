@@ -36,7 +36,7 @@ if (
 }
 ?>
 
-<section class="current-opportunities current-opportunities--<?php echo esc_attr($background); ?> <?php echo esc_attr($spacing); ?>">
+<section id="current-opportunities" class="current-opportunities current-opportunities--<?php echo esc_attr($background); ?> <?php echo esc_attr($spacing); ?>">
     <div class="current-opportunities__container">
 
         <div class="current-opportunities__left">

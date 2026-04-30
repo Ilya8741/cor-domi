@@ -110,36 +110,54 @@
           </div>
         <?php endif; ?>
 
-        <?php if (have_rows('contact_info')): ?>
-          <ul class="contact-hb-info__list">
-            <?php while (have_rows('contact_info')): the_row(); ?>
-              <?php
-              $info_link = get_sub_field('link');
+     <?php if (have_rows('contact_info')): ?>
+  <ul class="contact-hb-info__list">
+    <?php
+    $info_index = 0;
 
-              if (empty($info_link) || empty($info_link['url'])) {
-                continue;
-              }
+    while (have_rows('contact_info')): the_row();
+      $info_index++;
 
-              $is_address = $info_link['url'] === '#';
-              ?>
+      $info_link = get_sub_field('link');
 
-              <li class=" contact-page-hb-info__item <?php echo $is_address ? 'contact-page-hb-info__item-address' : ''; ?>">
-                <?php if (!$is_address): ?>
-                  <a
-                    class="hb-info__link"
-                    href="<?php echo esc_url($info_link['url']); ?>"
-                    target="<?php echo esc_attr($info_link['target'] ?: '_self'); ?>">
-                    <?php echo esc_html($info_link['title'] ?: ''); ?>
-                  </a>
-                <?php else: ?>
-                  <p class="hb-info__link">
-                    <?php echo esc_html($info_link['title'] ?: ''); ?>
-                  </p>
-                <?php endif; ?>
-              </li>
-            <?php endwhile; ?>
-          </ul>
+      if (empty($info_link) || empty($info_link['url'])) {
+        continue;
+      }
+
+      $is_address = $info_link['url'] === '#';
+      $is_third_modal_link = $info_index === 3;
+    ?>
+
+      <li class="contact-page-hb-info__item <?php echo $is_address ? 'contact-page-hb-info__item-address' : ''; ?>">
+        <?php if ($is_third_modal_link): ?>
+
+          <a
+            class="hb-info__link"
+            href="#contact-modal-3"
+            data-modal="#contact-modal-3">
+            <?php echo esc_html($info_link['title'] ?: ''); ?>
+          </a>
+
+        <?php elseif (!$is_address): ?>
+
+          <a
+            class="hb-info__link"
+            href="<?php echo esc_url($info_link['url']); ?>"
+            target="<?php echo esc_attr($info_link['target'] ?: '_self'); ?>">
+            <?php echo esc_html($info_link['title'] ?: ''); ?>
+          </a>
+
+        <?php else: ?>
+
+          <p class="hb-info__link">
+            <?php echo esc_html($info_link['title'] ?: ''); ?>
+          </p>
+
         <?php endif; ?>
+      </li>
+    <?php endwhile; ?>
+  </ul>
+<?php endif; ?>
 
         <?php
         $studio_title  = get_sub_field('studio_title');
