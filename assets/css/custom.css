@@ -251,18 +251,17 @@ html {
   background: transparent;
   border: 0;
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  padding: 4px;
   border-radius: 3px;
   background: rgba(255, 255, 255, 0.1);
   width: fit-content;
   margin-left: auto;
-}
-
-.team-modal__close svg {
-  height: 24px;
-  width: 24px;
+  padding: 0;
+  height: 32px;
+  width: 32px;
+  min-height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .team-modal.is-open {
@@ -287,7 +286,7 @@ html {
   position: absolute;
   inset: 0;
   margin-left: auto;
-  width: min(600px, 100%);
+  width: min(700px, 100%);
   background: #2b2b2b;
   color: #fff;
   padding: 64px 60px 64px 60px;
@@ -5059,7 +5058,7 @@ body.preloader-already-seen .site-header {
 
 .press-hero__top {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(280px, 430px);
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 536px);
   gap: 40px;
   align-items: start;
   margin-bottom: 80px;
@@ -5227,9 +5226,10 @@ body.preloader-already-seen .site-header {
   border-top: 1px solid rgba(0, 0, 0, 0.24);
 }
 
-.press-grid__item[data-index="0"], .press-grid__item[data-index="3"] {
+.press-grid__item[data-index="0"],
+.press-grid__item[data-index="3"] {
   border: none;
-} 
+}
 
 .press-grid__item:first-child {
   padding-top: 0;
@@ -5777,12 +5777,12 @@ body.preloader-already-seen .site-header {
   }
 
   .article-press-content__block h3 {
-  font-size: 20px;
-}
+    font-size: 20px;
+  }
 
-.article-press-content__block h4 {
-  font-size: 18px;
-}
+  .article-press-content__block h4 {
+    font-size: 18px;
+  }
 
   .article-press-content__container {
     padding: 0 24px;
@@ -6471,7 +6471,7 @@ body.preloader-already-seen .site-header {
   grid-template-columns: 596px minmax(0, 1fr);
   gap: 24px;
   align-items: center;
-   max-width: 1440px;
+  max-width: 1440px;
   margin: 0 auto;
 }
 
@@ -6514,9 +6514,8 @@ body.preloader-already-seen .site-header {
   outline: 0 !important;
   box-shadow: none !important;
   transition: all 0.3s ease;
-  border-radius: 2px  !important;
-border: 1px solid rgba(242, 242, 242, 0.25)  !important;
-
+  border-radius: 2px !important;
+  border: 1px solid rgba(242, 242, 242, 0.25) !important;
 }
 
 .contact-input:focus,
@@ -6636,12 +6635,20 @@ form.wpcf7-form br {
   position: relative;
   border-radius: 2px !important;
   border: 1px solid rgba(242, 242, 242, 0.25) !important;
-  background: #2b2b2b;
   padding: 16px 24px;
   text-align: center;
   color: #fff !important;
   margin-top: 6px;
   height: 104px;
+}
+
+.wpcf7-form .contact-form-button + .wpcf7-spinner + .wpcf7-spinner {
+  display: none !important;
+}
+
+.wpcf7-form .contact-form-button + .wpcf7-spinner {
+  margin-top: 16px;
+  margin-left: 0 !important;
 }
 
 .file-drop .file-input[type="file"] {
@@ -6689,7 +6696,7 @@ form.wpcf7-form br {
   font-size: 12px;
   font-style: normal;
   font-weight: 400;
-  line-height: 125%; 
+  line-height: 125%;
   position: absolute !important;
   top: 35px;
   left: 50%;
@@ -6830,6 +6837,7 @@ form.wpcf7-form br {
   display: flex;
   flex-direction: column;
   gap: 32px;
+  background: #231b1b;
 }
 
 .contact-radio .wpcf7-radio {
@@ -6850,18 +6858,18 @@ form.wpcf7-form br {
 }
 
 .contact-radio .wpcf7-radio .wpcf7-list-item .wpcf7-list-item-label {
-  color: #FFF;
+  color: #fff;
   font-family: "Public Sans", sans-serif;
   font-size: 12px;
   font-style: normal;
   font-weight: 400;
   line-height: 125%;
   letter-spacing: -0.4px;
-    cursor: pointer !important;
+  cursor: pointer !important;
 }
 
 .contact-label-first-main {
-  color: #FFF;
+  color: #fff;
   font-family: "Public Sans", sans-serif;
   font-size: 12px;
   font-style: normal;
@@ -6886,7 +6894,7 @@ form.wpcf7-form br {
   place-content: center;
   cursor: pointer;
   flex-shrink: 0;
-  transition: all .2s ease;
+  transition: all 0.2s ease;
 }
 
 .wpcf7-radio input[type="radio"]::before {
@@ -6917,7 +6925,7 @@ form.wpcf7-form br {
     font-size: 32px;
   }
 
-  .contact-page-info-block  {
+  .contact-page-info-block {
     padding: 0;
     gap: 40px;
   }
@@ -6936,7 +6944,7 @@ form.wpcf7-form br {
   .contact-page-media-wrapper {
     display: none;
   }
-  
+
   .contact-hb-info__list {
     max-width: 100%;
     margin: 0;
