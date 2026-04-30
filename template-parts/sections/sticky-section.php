@@ -4,6 +4,27 @@ $text = get_sub_field('text');
 $link = get_sub_field('link');
 $images = get_sub_field('images');
 
+	$filled_images = array();
+
+		if (!empty($images) && is_array($images)) {
+			foreach ($images as $index => $item) {
+				$image = $item['image'] ?? null;
+
+				if (!empty($image)) {
+					$filled_images[] = array(
+						'index' => $index,
+						'image' => $image,
+					);
+				}
+			}
+		}
+
+		$only_first_image = (
+			count($filled_images) === 1 &&
+			isset($filled_images[0]['index']) &&
+			(int) $filled_images[0]['index'] === 0
+		);
+
 if (empty($title) && empty($text) && empty($link) && empty($images)) {
 	return;
 }
@@ -11,7 +32,7 @@ if (empty($title) && empty($text) && empty($link) && empty($images)) {
 
 <section class="sticky-section">
 	<div class="sticky-section__container">
-		<div class="sticky-section__grid">
+		<div class="sticky-section__grid <?php echo $only_first_image ? 'only-one' : ''; ?>">
 
 			<div class="sticky-section__left" data-aos="fade-right">
 				<div class="sticky-section__left-inner">
@@ -43,30 +64,27 @@ if (empty($title) && empty($text) && empty($link) && empty($images)) {
 				</div>
 			</div>
 
-			<?php if (!empty($images) && is_array($images)) : ?>
-				<div class="sticky-section__right">
-					<div class="sticky-section__images">
-						<?php foreach ($images as $index => $item) :
-							$image = $item['image'] ?? null;
+		<?php if (!empty($filled_images)) : ?>
+			<div class="sticky-section__right">
+				<div class="sticky-section__images <?php echo $only_first_image ? 'only-one' : ''; ?>">
+					<?php foreach ($filled_images as $filled_item) :
+						$index = $filled_item['index'];
+						$image = $filled_item['image'];
 
-							if (empty($image)) {
-								continue;
-							}
-
-							$number = $index + 1;
-							$item_class = 'sticky-section__image sticky-section__image--' . $number;
-							?>
-							<div class="<?php echo esc_attr($item_class); ?>" data-aos="fade-up">
-								<img
-									src="<?php echo esc_url($image['url']); ?>"
-									alt="<?php echo esc_attr($image['alt'] ?: 'Sticky section image'); ?>"
-									loading="lazy"
-								>
-							</div>
-						<?php endforeach; ?>
-					</div>
+						$number = $index + 1;
+						$item_class = 'sticky-section__image sticky-section__image--' . $number;
+						?>
+						<div class="<?php echo esc_attr($item_class); ?>" data-aos="fade-up">
+							<img
+								src="<?php echo esc_url($image['url']); ?>"
+								alt="<?php echo esc_attr(!empty($image['alt']) ? $image['alt'] : 'Sticky section image'); ?>"
+								loading="lazy"
+							>
+						</div>
+					<?php endforeach; ?>
 				</div>
-			<?php endif; ?>
+			</div>
+		<?php endif; ?>
 
 		</div>
 	</div>

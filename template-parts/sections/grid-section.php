@@ -6,6 +6,7 @@ $text = get_sub_field('text');
 $link = get_sub_field('link');
 $big_image = get_sub_field('big_image');
 $small_image = get_sub_field('small_image');
+$small_title = get_sub_field('small_title');
 
 if (empty($title) && empty($text) && empty($link) && empty($big_image) && empty($small_image)) {
 	return;
@@ -15,7 +16,7 @@ $background = !empty($background) ? $background : 'yellow';
 $spacing = !empty($spacing) ? $spacing : 'all-spacing';
 ?>
 
-<section class="grid-section grid-section--<?php echo esc_attr($background); ?> grid-section--<?php echo esc_attr($spacing); ?>">
+<section class="grid-section grid-section--<?php echo esc_attr($background); ?> grid-section--<?php echo esc_attr($spacing); ?>  <?php if ($small_title): ?> grid-section--small-title<?php endif; ?>">
 	<div class="grid-section__container">
 		<div class="grid-section__mobile-top">
 			<?php if (!empty($big_image)) : ?>
@@ -75,9 +76,9 @@ $spacing = !empty($spacing) ? $spacing : 'all-spacing';
 					<?php endif; ?>
 
 					<?php if (!empty($text)) : ?>
-						<p class="grid-section__text">
-							<?php echo nl2br(esc_html($text)); ?>
-						</p>
+						<div class="grid-section__text">
+							<?php echo wp_kses_post($text); ?>
+						</div>
 					<?php endif; ?>
 
 					<?php if (!empty($link['url']) && !empty($link['title'])) : ?>

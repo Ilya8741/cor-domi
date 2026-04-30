@@ -15,7 +15,7 @@ $items = get_sub_field('items');
 <?php if ($title || $text || $link || $image_1 || $image_2 || $items): ?>
 <section class="service-content <?php echo esc_attr($spacing); ?> <?php echo esc_attr($background); ?>">
   <div class="service-content__container">
-    <div class="service-content__top">
+    <div class="service-content__top  <?php if (!$image_2): ?>service-content__top--without-image<?php endif; ?>">
       <div class="service-content__content" data-aos="fade-right">
         <?php if ($title): ?>
           <h2 class="service-content__title main-title-h5">
@@ -57,9 +57,9 @@ $items = get_sub_field('items');
         </div>
       <?php endif; ?>
     </div>
-
+    <?php if ($image_2): ?>
     <div class="service-content__bottom">
-      <?php if ($image_2): ?>
+      
         <div class="service-content__image service-content__image--large" data-aos="fade-right">
           <?php
           echo wp_get_attachment_image(
@@ -75,7 +75,7 @@ $items = get_sub_field('items');
           );
           ?>
         </div>
-      <?php endif; ?>
+     
 
       <?php if (!empty($items)): ?>
         <div class="service-content__accordion" data-aos="fade-left">
@@ -116,6 +116,7 @@ $items = get_sub_field('items');
         </div>
       <?php endif; ?>
     </div>
+     <?php endif; ?>
   </div>
 </section>
 <?php endif; ?>

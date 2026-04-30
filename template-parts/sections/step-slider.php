@@ -1,6 +1,8 @@
 <?php
 $title   = get_sub_field('title');
+$background = get_sub_field('background');
 $spacing = get_sub_field('spacing') ?: 'all-spacing';
+$background = !empty($background) ? $background : 'white';
 $items    = get_sub_field('items');
 
 if (empty($items)) {
@@ -8,7 +10,7 @@ if (empty($items)) {
 }
 ?>
 
-<section class="step-slider <?php echo esc_attr($spacing); ?>">
+<section class="step-slider step-slider--<?php echo esc_attr($background); ?> <?php echo esc_attr($spacing); ?>">
 	<div class="step-slider-container">
 		<?php if ($title): ?>
 			<div class="step-slider__heading">

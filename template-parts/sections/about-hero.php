@@ -2,13 +2,13 @@
 $image    = get_sub_field('image');
 $subtitle = get_sub_field('subtitle');
 $title    = get_sub_field('title');
-
+$small_title = get_sub_field('small_title');
 if ( ! $image && ! $subtitle && ! $title ) {
 	return;
 }
 ?>
 
-<section class="about-hero" data-theme="dark" aria-label="<?php echo esc_attr( wp_strip_all_tags( $title ?: 'About hero section' ) ); ?>">
+<section class="about-hero <?php if ($small_title): ?> about-hero--small-title<?php endif; ?>" data-theme="dark" aria-label="<?php echo esc_attr( wp_strip_all_tags( $title ?: 'About hero section' ) ); ?>">
 	<?php if ( $image ) : ?>
 		<div class="about-hero__media">
 			<?php
@@ -41,6 +41,8 @@ if ( ! $image && ! $subtitle && ! $title ) {
 					<?php echo wp_kses_post( $title ); ?>
 				</h1>
 			<?php endif; ?>
+
+			
 		</div>
 	</div>
 </section>
