@@ -339,14 +339,13 @@ $footer_copyright = get_field('footer_copyright', 'footer_options');
 		<div class="team-modal footer-modal" aria-hidden="true">
 		<div class="team-modal__overlay" data-close></div>
 		<div class="team-modal__dialog contact-team-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="footer-modal-title">
- <button class="team-modal__close" type="button" data-close aria-label="Close">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-              <path d="M2.63672 16.3643L15.3646 3.63634" stroke="white" stroke-linejoin="round" />
-              <path d="M2.63672 3.63574L15.3646 16.3637" stroke="white" stroke-linejoin="round" />
-            </svg>
-            <span>Close</span>
-          </button>
-			<div class="team-modal__mount footer-team-modal__mount"></div>
+  <button class="team-modal__close" type="button" data-close aria-label="Close">
+       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <path d="M18 6L6 18" stroke="white" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M6 6L18 18" stroke="white" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+        </button>
+			<div class="team-modal__mount contact-team-modal__mount"></div>
 		</div>
 	</div>
 </footer>

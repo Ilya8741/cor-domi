@@ -9,8 +9,7 @@
 <section class="sticky-section">
 	<div class="sticky-section__container">
 		<div class="sticky-section__grid article-sticky-content__grid">
-
-			<div class="sticky-section__left" data-aos="fade-right">
+			<div class="sticky-section__left article--sticky-section__left" data-aos="fade-right">
 				<div class="sticky-section__left-inner">
 					<h2 class="sticky-section__top-content article-sticky-content-title main-title-h5">
                         <?php echo wp_kses_post($article_title); ?>
@@ -44,24 +43,41 @@
 			<?php if (!empty($images) && is_array($images)) : ?>
 				<div class="sticky-section__right">
 					<div class="sticky-section__images">
-						<?php foreach ($images as $index => $item) :
-							$image = $item['image'] ?? null;
+				<?php foreach ($images as $index => $item) :
+	$image   = $item['image'] ?? null;
+	$version = $item['version'] ?? 'none';
 
-							if (empty($image)) {
-								continue;
-							}
+	if (empty($image)) {
+		continue;
+	}
 
-							$number = $index + 1;
-							$item_class = 'sticky-section__image sticky-section__image--' . $number;
-							?>
-							<div class="<?php echo esc_attr($item_class); ?>" data-aos="fade-up">
-								<img
-									src="<?php echo esc_url($image['url']); ?>"
-									alt="<?php echo esc_attr($image['alt'] ?: 'Sticky section image'); ?>"
-									loading="lazy"
-								>
-							</div>
-						<?php endforeach; ?>
+	$allowed_versions = array(
+		'none',
+		'one-column',
+		'two-column',
+		'landscape',
+	);
+
+	if (!in_array($version, $allowed_versions, true)) {
+		$version = 'none';
+	}
+
+	$number = $index + 1;
+
+	$item_class = array(
+		'sticky-section__image',
+		'sticky-section__image--' . $number,
+		'sticky-section__image--' . $version,
+	);
+	?>
+	<div class="<?php echo esc_attr(implode(' ', $item_class)); ?>" data-aos="fade-up">
+		<img
+			src="<?php echo esc_url($image['url']); ?>"
+			alt="<?php echo esc_attr($image['alt'] ?: 'Sticky section image'); ?>"
+			loading="lazy"
+		>
+	</div>
+<?php endforeach; ?>
 					</div>
 				</div>
 			<?php endif; ?>

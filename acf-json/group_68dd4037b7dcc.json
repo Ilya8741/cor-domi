@@ -249,6 +249,36 @@
                                     "allow_in_bindings": 0,
                                     "preview_size": "medium",
                                     "parent_repeater": "field_69b82039511f0"
+                                },
+                                {
+                                    "key": "field_69f8d1ce883d7",
+                                    "label": "Version",
+                                    "name": "version",
+                                    "aria-label": "",
+                                    "type": "select",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "choices": {
+                                        "none": "None",
+                                        "one-column": "One column portrait",
+                                        "two-column": "Two column portrait",
+                                        "landscape": "Landscape"
+                                    },
+                                    "default_value": "none",
+                                    "return_format": "value",
+                                    "multiple": 0,
+                                    "allow_null": 0,
+                                    "allow_in_bindings": 0,
+                                    "ui": 0,
+                                    "ajax": 0,
+                                    "placeholder": "",
+                                    "parent_repeater": "field_69b82039511f0"
                                 }
                             ]
                         }
@@ -929,5 +959,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1777296268
+    "modified": 1777915001
 }

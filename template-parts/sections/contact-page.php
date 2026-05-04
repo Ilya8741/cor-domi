@@ -10,75 +10,117 @@
       </h2>
 
     </div>
-    <?php if (have_rows('contact_buttons')): ?>
-      <?php $duration = 500; ?>
-      <div class="contact-buttons">
-        <?php
-        $i = 0;
+ <?php if (have_rows('contact_buttons')): ?>
+  <?php $duration = 500; ?>
 
-        while (have_rows('contact_buttons')): the_row();
-          $i++;
+  <div class="contact-buttons">
+    <?php
+    $i = 0;
 
-          $popup_title  = get_sub_field('popup_title');
-          $contact_form = get_sub_field('contact_form', false, false);
-          $card_title   = get_sub_field('card_title');
-          $card_text    = get_sub_field('card_text');
-          $card_image   = get_sub_field('card_image');
-          $tpl_id       = 'contact-modal-' . $i;
-        ?>
+    while (have_rows('contact_buttons')): the_row();
+      $i++;
 
-          <?php if ($popup_title): ?>
-            <div class="contact-card"  data-aos="fade-right" data-aos-delay="100" data-aos-easing="ease-out" data-aos-duration="<?php echo esc_attr($duration); ?>">
-              <?php if (!empty($card_image) && is_array($card_image)): ?>
-                <button
-                  type="button"
-                  class="contact-card__image-wrapper"
-                  data-modal="#<?php echo esc_attr($tpl_id); ?>"
-                  aria-label="<?php echo esc_attr('Open ' . ($card_title ?: 'contact form')); ?>">
-                  <img
-                    src="<?php echo esc_url($card_image['url']); ?>"
-                    alt="<?php echo esc_attr($card_image['alt'] ?: $card_title); ?>"
-                    class="contact-card__image">
-                </button>
-              <?php endif; ?>
+      $popup_title  = get_sub_field('popup_title');
+      $contact_form = get_sub_field('contact_form', false, false);
+      $card_title   = get_sub_field('card_title');
+      $card_text    = get_sub_field('card_text');
+      $card_image   = get_sub_field('card_image');
+      $tpl_id       = 'contact-modal-' . $i;
 
-              <?php if ($card_title): ?>
-                <h3 class="contact-card__title main-title-h5">
-                  <?php echo esc_html($card_title); ?>
-                </h3>
-              <?php endif; ?>
+      $is_email_card = $i === 3;
+      $email_url     = 'mailto:team@eburycomms.com';
+    ?>
 
-              <?php if ($card_text): ?>
-                <p class="contact-card__text">
-                  <?php echo esc_html($card_text); ?>
-                </p>
-              <?php endif; ?>
+      <?php if ($popup_title): ?>
+        <div
+          class="contact-card"
+          data-aos="fade-right"
+          data-aos-delay="100"
+          data-aos-easing="ease-out"
+          data-aos-duration="<?php echo esc_attr($duration); ?>"
+        >
+          <?php if (!empty($card_image) && is_array($card_image)): ?>
 
-              <button type="button" class="main-link contact-link" data-modal="#<?php echo esc_attr($tpl_id); ?>">
-                <span>Enquire now</span>
+            <?php if ($is_email_card): ?>
+              <a
+                class="contact-card__image-wrapper"
+                href="<?php echo esc_url($email_url); ?>"
+                aria-label="<?php echo esc_attr('Email ' . ($card_title ?: 'team')); ?>"
+              >
+                <img
+                  src="<?php echo esc_url($card_image['url']); ?>"
+                  alt="<?php echo esc_attr($card_image['alt'] ?: $card_title); ?>"
+                  class="contact-card__image"
+                >
+              </a>
+            <?php else: ?>
+              <button
+                type="button"
+                class="contact-card__image-wrapper"
+                data-modal="#<?php echo esc_attr($tpl_id); ?>"
+                aria-label="<?php echo esc_attr('Open ' . ($card_title ?: 'contact form')); ?>"
+              >
+                <img
+                  src="<?php echo esc_url($card_image['url']); ?>"
+                  alt="<?php echo esc_attr($card_image['alt'] ?: $card_title); ?>"
+                  class="contact-card__image"
+                >
               </button>
-            </div>
+            <?php endif; ?>
 
-            <div id="<?php echo esc_attr($tpl_id); ?>" class="team-modal-template contact-team-modal-template" hidden>
-              <div class="team-modal__inner">
-                <div class="team-modal__text">
-                  <h3 class="team-modal__title main-title-h5">
-                    <?php echo esc_html($popup_title); ?>
-                  </h3>
-
-                  <?php if ($contact_form): ?>
-                    <div class="team-modal__content contact-team-modal__content">
-                      <?php echo do_shortcode(shortcode_unautop($contact_form)); ?>
-                    </div>
-                  <?php endif; ?>
-                </div>
-              </div>
-            </div>
           <?php endif; ?>
-          <?php $duration += 200; ?>
-        <?php endwhile; ?>
-      </div>
-    <?php endif; ?>
+
+          <?php if ($card_title): ?>
+            <h3 class="contact-card__title main-title-h5">
+              <?php echo esc_html($card_title); ?>
+            </h3>
+          <?php endif; ?>
+
+          <?php if ($card_text): ?>
+            <p class="contact-card__text">
+              <?php echo esc_html($card_text); ?>
+            </p>
+          <?php endif; ?>
+
+          <?php if ($is_email_card): ?>
+            <a
+              class="main-link contact-link"
+              href="<?php echo esc_url($email_url); ?>"
+            >
+              <span>Enquire now</span>
+            </a>
+          <?php else: ?>
+            <button
+              type="button"
+              class="main-link contact-link"
+              data-modal="#<?php echo esc_attr($tpl_id); ?>"
+            >
+              <span>Enquire now</span>
+            </button>
+          <?php endif; ?>
+        </div>
+
+        <div id="<?php echo esc_attr($tpl_id); ?>" class="team-modal-template contact-team-modal-template" hidden>
+          <div class="team-modal__inner">
+            <div class="team-modal__text">
+              <h3 class="team-modal__title main-title-h5">
+                <?php echo esc_html($popup_title); ?>
+              </h3>
+
+              <?php if ($contact_form): ?>
+                <div class="team-modal__content contact-team-modal__content">
+                  <?php echo do_shortcode(shortcode_unautop($contact_form)); ?>
+                </div>
+              <?php endif; ?>
+            </div>
+          </div>
+        </div>
+      <?php endif; ?>
+
+      <?php $duration += 200; ?>
+    <?php endwhile; ?>
+  </div>
+<?php endif; ?>
 
     <div class="team-modal" aria-hidden="true">
       <div class="team-modal__overlay" data-close></div>
@@ -96,8 +138,6 @@
     </div>
 
     <div class="contact-page-info">
-
-
       <div class="contact-page-info-block" data-aos="fade-right" data-aos-duration="600" data-aos-delay="100" data-aos-easing="ease-out">
         <?php $image1 = get_sub_field('image'); ?>
 
@@ -185,15 +225,16 @@
           </div>
         <?php endif; ?>
       </div>
-      <?php $map = get_sub_field('map'); ?>
+      <?php $map = get_sub_field('map');
+      $map_url = get_sub_field('map_url'); ?>
 
       <?php if (!empty($map) && is_array($map)): ?>
-        <div class="contact-page-map-wrapper" data-aos="fade-left" data-aos-duration="600" data-aos-delay="100" data-aos-easing="ease-out">
+        <a href="<?php echo esc_url($map_url); ?>" target="_blank" class="contact-page-map-wrapper" data-aos="fade-left" data-aos-duration="600" data-aos-delay="100" data-aos-easing="ease-out">
           <img
             src="<?php echo esc_url($map['url']); ?>"
             class="contact-page-info-image"
             alt="<?php echo esc_attr($map['alt'] ?: 'Map'); ?>">
-        </div>
+        </a>
       <?php endif; ?>
     </div>
   </div>

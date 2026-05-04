@@ -2,10 +2,9 @@
 $hero_title = get_sub_field('hero_title');
 $hero_image = get_sub_field('hero_image');
 $hero_subtitle = get_sub_field('hero_subtitle');
-$about_page = get_sub_field('about_page');
 
 if ($hero_title || $hero_image): ?>
-	<section data-theme="dark" class="hero-section <?php if ($about_page): ?> hero-section--about<?php endif; ?>">
+	<section data-theme="dark" class="hero-section">
 		<?php if ($hero_image): ?>
 			<div class="hero-section__media">
 				<?php

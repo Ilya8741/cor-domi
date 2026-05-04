@@ -1,22 +1,30 @@
 <?php
-$background = get_sub_field('background');
-$spacing = get_sub_field('spacing');
-$title = get_sub_field('title');
-$link = get_sub_field('link');
-$text = get_sub_field('text');
-$name = get_sub_field('name');
-$job = get_sub_field('job');
-$without_link = get_sub_field('without_link');
+$background    = get_sub_field('background');
+$spacing       = get_sub_field('spacing');
+$title         = get_sub_field('title');
+$link          = get_sub_field('link');
+$text          = get_sub_field('text');
+$name          = get_sub_field('name');
+$job           = get_sub_field('job');
+$without_link  = get_sub_field('without_link');
+$contact_form  = get_sub_field('contact_form');
+$contact_title = get_sub_field('contact_title');
 
-if (empty($title) && empty($link) && empty($text) && empty($name) && empty($job)) {
+if (empty($title) && empty($link) && empty($text) && empty($name) && empty($job) && empty($contact_form)) {
 	return;
 }
 
 $background = !empty($background) ? $background : 'yellow';
-$spacing = !empty($spacing) ? $spacing : 'all-spacing';
+$spacing    = !empty($spacing) ? $spacing : 'all-spacing';
+
+$section_id = 'quote-section-' . uniqid();
+$modal_id   = $section_id . '-contact-modal';
 ?>
 
-<section class="quote-section <?php if ($without_link): ?> quote-section--without-link<?php endif; ?> quote-section--<?php echo esc_attr($background); ?> quote-section--<?php echo esc_attr($spacing); ?>">
+<section
+	id="<?php echo esc_attr($section_id); ?>"
+	class="quote-section <?php if ($without_link): ?> quote-section--without-link<?php endif; ?> quote-section--<?php echo esc_attr($background); ?> quote-section--<?php echo esc_attr($spacing); ?>"
+>
 	<div class="quote-section__container">
 		<div class="quote-section__top">
 			<div class="quote-section__quote" aria-hidden="true">
@@ -36,14 +44,27 @@ $spacing = !empty($spacing) ? $spacing : 'all-spacing';
 					</h2>
 				<?php endif; ?>
 
-				<?php if (!empty($link['url']) && !empty($link['title'])) : ?>
-					<a
-						class="quote-section__link main-link"
-						href="<?php echo esc_url($link['url']); ?>"
-						<?php echo !empty($link['target']) ? 'target="' . esc_attr($link['target']) . '"' : ''; ?>
-					>
-						<?php echo esc_html($link['title']); ?>
-					</a>
+				<?php if (!$without_link && !empty($link['title'])) : ?>
+
+					<?php if (!empty($contact_form)) : ?>
+						<a
+							class="quote-section__link main-link"
+							href="#<?php echo esc_attr($modal_id); ?>"
+							data-modal="#<?php echo esc_attr($modal_id); ?>"
+							aria-expanded="false"
+						>
+							<?php echo esc_html($link['title']); ?>
+						</a>
+					<?php elseif (!empty($link['url'])) : ?>
+						<a
+							class="quote-section__link main-link"
+							href="<?php echo esc_url($link['url']); ?>"
+							<?php echo !empty($link['target']) ? 'target="' . esc_attr($link['target']) . '"' : ''; ?>
+						>
+							<?php echo esc_html($link['title']); ?>
+						</a>
+					<?php endif; ?>
+
 				<?php endif; ?>
 			</div>
 
@@ -68,4 +89,20 @@ $spacing = !empty($spacing) ? $spacing : 'all-spacing';
 			</div>
 		</div>
 	</div>
+
+	<?php if (!empty($contact_form)) : ?>
+		<div id="<?php echo esc_attr($modal_id); ?>" class="team-modal-template" hidden>
+			<div class="team-modal__content contact-modal__content">
+				<?php if (!empty($contact_title)) : ?>
+					<h2 class="team-modal__title contact-modal__title">
+						<?php echo wp_kses_post($contact_title); ?>
+					</h2>
+				<?php endif; ?>
+
+				<div class="contact-modal__form">
+					<?php echo do_shortcode($contact_form); ?>
+				</div>
+			</div>
+		</div>
+	<?php endif; ?>
 </section>
