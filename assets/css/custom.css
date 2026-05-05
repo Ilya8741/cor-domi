@@ -1245,7 +1245,8 @@ max-width: 710px;
 .article-sticky-content h4,
 .article-sticky-content h3,
 .article-sticky-content h2,
-.article-sticky-content h1 {
+.article-sticky-content h1,
+.key-features-title {
   color: #0d0d0d;
   font-family: "Martina Plantijn", sans-serif;
   font-size: 20px;
@@ -1256,12 +1257,55 @@ max-width: 710px;
   display: block;
 }
 
+.key-features-title {
+  margin: 0 !important;
+}
+
 .article-sticky-content p {
   color: #0d0d0d;
   font-size: 16px;
   font-style: normal;
   font-weight: 300;
   line-height: 140%;
+}
+
+.article--accordion-content h3 {
+  display: none;
+}
+
+.key-features-main-accordion-item.is-open .article--accordion-content{
+    grid-template-rows: 1fr;
+}
+
+.key-features-main-accordion-item .article-sticky-content {
+  transition: all .3s ease;
+}
+
+.key-features-main-accordion-item.is-open .article-sticky-content {
+  padding-top: 16px;
+}
+
+.key-features-main-accordion-button {
+  border: none;
+  padding: 0;
+  background: transparent;
+      display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 420px;
+}
+
+.key-features-main-accordion-item.is-open
+  .site-footer__accordion-icon
+  path:nth-child(2) {
+  opacity: 0;
+}
+
+.key-features-main-accordion-item {
+  padding-bottom: 24px;
+ border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+ max-width: 420px;
 }
 
 @media (max-width: 1200px) {
@@ -1291,6 +1335,10 @@ max-width: 710px;
   .article-sticky-content h1 {
     font-size: 18px;
     margin-bottom: 8px;
+  }
+
+  .key-features-title {
+    margin-bottom: 0;
   }
 
   .article-sticky-content__link {
