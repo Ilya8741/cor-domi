@@ -230,9 +230,9 @@ $loop_items = $real_count > 1
     if (desktop && imagesEl && contentEl) {
       var BASE_W = 230;
       var NEAR_W = 352;
-      var FAR_W = 278;
-      var ACTIVE_W = 470;
-      var GAP = 48;
+      var FAR_W = 267;
+      var ACTIVE_W = 490;
+      var GAP = 36;
 
       var REAL_COUNT = contentEl.querySelectorAll('.swiper-slide').length;
       var IMAGE_COUNT = imagesEl.querySelectorAll('.swiper-slide').length;

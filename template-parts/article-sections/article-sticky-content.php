@@ -15,11 +15,25 @@ $article_title = get_the_title();
 						<?php echo wp_kses_post($article_title); ?>
 					</h2>
 
-					<div class="sticky-section__bottom-content">
+					<div class="sticky-section__bottom-content article-sticky-section__bottom-content">
 						<?php if (!empty($content_approach)) : ?>
-							<div class="sticky-section__title article-sticky-content">
-								<?php echo wp_kses_post($content_approach); ?>
+								<div class="main-accordion-item overview-main-accordion-item key-features-main-accordion-item is-open">
+								<button class="main-accordion-button key-features-main-accordion-button">
+									<span class="key-features-title">
+										Overview
+									</span>
+									<svg xmlns="http://www.w3.org/2000/svg" class="site-footer__accordion-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+										<path d="M5 12H19" stroke="#0d0d0d" stroke-linecap="round" stroke-linejoin="round" />
+										<path d="M12 5V19" stroke="#0d0d0d" stroke-linecap="round" stroke-linejoin="round" />
+									</svg>
+								</button>
+								<div class="site-footer__accordion-content article--accordion-content">
+									<div class="article-sticky-content site-footer__accordion-inner">
+											<?php echo wp_kses_post($content_approach); ?>
+									</div>
+								</div>
 							</div>
+						
 						<?php endif; ?>
 						<?php if (!empty($content_outcome)) : ?>
 							<div class="main-accordion-item key-features-main-accordion-item">
